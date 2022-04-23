@@ -1,0 +1,1 @@
+grand_ma_and_son(X,Y):-parent(X,Z),parent(Z,Y);parent(W,X),parent(Y,W).

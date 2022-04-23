@@ -1,0 +1,4 @@
+
+father(X,Y):-parent(X,Y),man(X).
+
+fathers(X):-parent(X,_),man(X).

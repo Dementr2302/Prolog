@@ -1,0 +1,4 @@
+children(X):-parent(_,X).
+
+sisters(X):-children(X),woman(X).
+sister(X,Y):-parent(Z,X), parent(Z,Y), woman(X).

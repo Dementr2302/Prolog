@@ -1,0 +1,3 @@
+
+grandmother(X,Y):-parent(parent,Y),mother(X,parent).
+grandmothers(X):-parent(Z,X),parent(Y,Z),woman(Y),write(Y).

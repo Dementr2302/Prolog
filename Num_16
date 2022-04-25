@@ -1,0 +1,3 @@
+p_ch(0,1):-!.
+p_ch(X,Y):-X1 is X div 10,p_ch(X1,Y1),Y is Y1*(X mod 10).
+p_ch(X):-p_ch(X,Y),write(Y).

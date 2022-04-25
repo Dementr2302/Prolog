@@ -1,0 +1,3 @@
+p_z(0,Y):-write(Y),!.
+p_z(X,Y):- N is (X div 10),M is (Y*(X mod 10)), p_z(N,M).
+p_z(X):-p_z(X,1).

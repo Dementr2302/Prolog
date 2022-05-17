@@ -43,8 +43,4 @@ parent(dima,agata).
 parent(violetta,alexey).
 parent(violetta,agata).
 
-%12
-prost(X):-X1 is X-1, prost(X,X1).
-prost(_,1):- !.
-prost(X,D) :- 0 is X mod D,!, fail.
-prost(X,D):- D1 is D-1, prost(X,D1).
+

@@ -9,4 +9,8 @@ sumUp(_,0,0):-!.
 sumUp(X,Del,Sum):-D1 is Del-1, sumUp(X,D1,NewSum),
     (0 is X mod Del,prost(Del), Sum is NewSum+Del; Sum is NewSum).
     
-    
+sumDown(X,Sum):-sumDown(X,X,Sum,0),!.
+sumDown(_,0,Sum,Sum):-!.
+sumDown(X,Del,Sum,CurSum):-
+    (0 is X mod Del,prost(Del), NewSum is CurSum+Del; NewSum is CurSum),
+    D1 is Del-1, sumDown(X,D1,Sum,NewSum).

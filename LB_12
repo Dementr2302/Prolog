@@ -27,3 +27,16 @@ multDel(X,Del,Res,CurMult):-
     (0 is X mod Del,sumCifr(Del,Y),sumCifr(X,Z),Y<Z,
     NewMult is CurMult*Del; NewMult is CurMult),D1 is Del-1,
     multDel(X,D1,Res,NewMult).
+
+%14
+List([H|T],Res):-List([H|T],Res,0).
+List([],Res,Res):-!.
+List([_|T], Res,NowRes):-NewRes is NowRes+1, 
+    List(T,Res,NewRes).
+
+
+readList(0, []) :- !.
+readList(I, [X|T]) :- write("input - "),read(X), I1 is I - 1, readList(I1, T).
+
+write_list([]) :- !.
+write_list([X|T]) :- write(X), nl, write_list(T).

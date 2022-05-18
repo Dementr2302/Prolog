@@ -68,3 +68,16 @@ indMin([H|T],Ind,IndMin,NowInd,MinEl):-
 task16:-write("Input lenght for list: "), read(Count),readList(Count,List),
     write("Index of min: "),indMin(List,Ind), write(Ind),!.
 
+
+%17
+
+concat([], List2, List2).
+concat([H|T], List2, [H|NewList]) :- concat(T, List2, NewList).
+moveBeforeMin([H|T],List):-indMin([H|T],IndMin),
+    moveBeforeMin([H|T],List,IndMin,0,[]).
+moveBeforeMin(L1,List,IndMin,IndMin,L2):- concat(L1,L2,List),!.
+moveBeforeMin([H|T],List,IndMin,IndNow,NowList):- NewInd is IndNow+1, concat(NowList,[H],NewList),
+    moveBeforeMin(T,List,IndMin,NewInd,NewList).
+
+num17:- write("Input lenght for list: "), read(Count),readList(Count,List),moveBeforeMin(List,NewList),
+    write("New List: "),write_list(NewList),!.

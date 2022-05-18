@@ -56,4 +56,15 @@ task15:-write("Input lenght for list: "), read(Count),readList(Count,List),
     lenList(List,Len),indMax(List,IndexM),
     X is Len-IndexM-1, write(X),!.
 
+%16
+
+indMin([H|T],Ind):-indMin(T,Ind,0,1,H).
+indMin([],Ind,Ind,_,_):-!.
+indMin([H|T],Ind,IndMin,NowInd,MinEl):-
+    (H<MinEl, NewIndMin is NowInd, NewMin is H;
+    NewIndMin is IndMin, NewMin is MinEl),
+    NewNowInd is NowInd+1,
+    indMin(T,Ind,NewIndMin,NewNowInd,NewMin).
+task16:-write("Input lenght for list: "), read(Count),readList(Count,List),
+    write("Index of min: "),indMin(List,Ind), write(Ind),!.
 

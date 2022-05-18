@@ -1,0 +1,4 @@
+
+search_no_chet_down(X):-search_no_chet_down(X,0),!.
+search_no_chet_down(0,Y):-write(Y),!.
+search_no_chet_down(X,Y):-NewX is X div 10,AnsX is X mod 10,(AnsX mod 2 =:= 0,AnsX>3 -> NewN is Y+1;NewN is Y),search_no_chet_down(NewX,NewN).

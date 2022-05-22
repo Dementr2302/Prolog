@@ -1,36 +1,7 @@
-readList(0, []) :- !.
-readList(I, [X|T]) :- write("input - "),read(X), I1 is I - 1, readList(I1, T).
-
-write_list([]) :- !.
-write_list([X|T]) :- write(X), nl, write_list(T).
-
-concat([], List2, List2).
-concat([H|T], List2, [H|NewList]) :- concat(T, List2, NewList).
 
 in_list([El|_],El).
 in_list([_|T],El):-in_list(T,El).
 
-unicList(List,List2):- unicList(List,List2,[]).
-unicList([],List,List):-!.
-unicList([H|T],List2,ListNow) :- in_list(ListNow,H), unicList(T,List2,ListNow),!;
-    concat(ListNow,[H],NewList), unicList(T,List2,NewList).
 
-
-
-
-%14
-
-Friend:-
-    Color = [_,_,_],
-    in_list(Color,[belokurov,_]),
-    in_list(Color,[chernov,_]),
-    in_list(Color,[ryzhov,_]),
-    in_list(Color,[_,blond]),
-    in_list(Color,[_,black]),
-    in_list(Color,[_,ginger]),
-    not(in_list(Color,[belokurov,blond])),
-    not(in_list(Color,[chernov,black])),
-    not(in_list(Color,[ryzhov,ginger])),
-    write(Color),!.
     
     

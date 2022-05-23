@@ -131,7 +131,6 @@ indMaxPair([H|T],(First,Last),(I1,I2),El,IndNow):-
     IF is I1, IL is I2,NewEl is El),
     NextInd is IndNow+1,
     indMaxPair(T,(First,Last),(IF,IL),NewEl,NextInd).
-%List2 - искомые элементы
 findBetwMax(List,List2):-indMaxPair(List,(I1,I2)),findBetwMax(List,(I1,I2),List2,0,[]),!.
 findBetwMax(_,(_,I2),List2,I2,List2):-!.
 findBetwMax([H|T],(I1,I2),List2,NowInd,NowList):- 

@@ -43,6 +43,20 @@ write_list([X|T]) :- write(X), nl, write_list(T).
 
 
 %15
+
+indMax([H|T], Ind):-indMax(T,Ind,0,1,H).
+indMax([],Ind,Ind,_,_):-!.
+indMax([H|T],Ind,IndMax,NowInd,MaxEl):-
+    (H>=MaxEl, NewIndMax is NowInd,NewMax is H,!;
+    NewIndMax is IndMax,NewMax is MaxEl),
+    NewNowInd is NowInd+1,
+    indMax(T,Ind,NewIndMax,NewNowInd,NewMax).
+
+lenList([H|T],Res):-lenList([H|T],Res,0).
+lenList([],Res,Res):-!.
+lenList([_|T], Res,NowRes):-NewRes is NowRes+1,
+    lenList(T,Res,NewRes).
+
 indexM([H|T], Ind):-indexM(T,Ind,0,1,H).
 indexM([],Ind,Ind,_,_):-!.
 indexM([H|T],Ind,IndexM,NowInd,MaxEl):-

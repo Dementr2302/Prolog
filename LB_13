@@ -175,3 +175,14 @@ zad20:-
         name("Frensis",C2),
         stronger(B2,C2,L),
 		write(L),!.
+
+%37
+
+lessLeft([H|Tail],Count):-lessLeft(H,Tail,0, Count,1).
+lessLeft(_,[],Count,Count,_):-!.
+lessLeft(LeftEl,[H|Tail],CountNow,Count, Ind):- 
+    (H<LeftEl, NewCount is CountNow+1, write(Ind),nl,!; NewCount is CountNow),
+    NextInd is Ind+1, lessLeft(H,Tail,NewCount,Count,NextInd).
+
+task37:-write("Input lenght of list: "), read(Count),readList(Count,List),
+    lessLeft(List,X), write("Number of elements that are less than the left: "),write(X), nl.

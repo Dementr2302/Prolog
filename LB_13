@@ -163,3 +163,19 @@ countMin([H|Tail],Min,CountNow,Count):-
 
 task43:-write("Input lenght of list: "), read(Count),readList(Count,List),
     countMin(List,C),write("Number of min: "), write(C), nl.
+
+%59
+
+numEl(List,El,Count):- numEl(List,El,0,Count).
+numEl([],_,Count,Count):-!.
+numEl([El|T],El,CNow,Count):- NewCount is CNow +1, numEl(T,El,NewCount,Count),!.
+numEl([_|Tail],El,C,Count):- numEl(Tail,El,C,Count).
+
+newList13(List,NewL):-unicList(List,UnicL),newList13(List,UnicL,NewL,[]).
+newList13(_,[],List,List):-!.
+newList13(List,[H|T],List2,NewList):- 
+   H<100, H>0, numEl(List,H,C),C >2, K is H*H, concat(NewList,[K],NextList),newList13(List,T,List2,NextList),!;
+   newList13(List,T,List2,NewList).
+
+task59:-write("Input lenght of list: "), read(Count),readList(Count,List),
+    newList13(List,NewList), write("New List: "), nl, write_list(NewList).
